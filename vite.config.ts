@@ -23,16 +23,16 @@ export default defineConfig({
   ],
   resolve: {
     alias: {
-      '@': fileURLToPath(new URL('./src', import.meta.url))
+      '@': fileURLToPath(new URL('./app/src', import.meta.url))
     }
   },
-  root: './',
-  publicDir: 'src/public/',
+  root: './app',
+  publicDir: 'public/',
   server: { open: true },
   build: {
     rollupOptions: {
       input: {
-        index: path.resolve(__dirname, 'src/public/index.html')
+        index: path.resolve(__dirname, 'app/public/index.html')
       }
     }
   }
