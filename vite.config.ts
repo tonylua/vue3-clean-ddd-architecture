@@ -10,7 +10,7 @@ export default defineConfig({
     vue(),
     vueJsx(),
     {
-      name: 'deep-index',
+      name: 'root-route-index',
       configureServer(server) {
         server.middlewares.use((req, res, next) => {
           if (req.url === '/') {
@@ -23,7 +23,8 @@ export default defineConfig({
   ],
   resolve: {
     alias: {
-      '@': fileURLToPath(new URL('./app/src', import.meta.url))
+      '@': fileURLToPath(new URL('./app/src', import.meta.url)),
+      '@domains': fileURLToPath(new URL('./domains', import.meta.url))
     }
   },
   root: './app',
