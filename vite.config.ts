@@ -1,23 +1,38 @@
 import path from 'node:path'
 import { fileURLToPath, URL } from 'node:url'
-
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import vueJsx from '@vitejs/plugin-vue-jsx'
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [vue(), vueJsx()],
+  plugins: [
+    vue(),
+    vueJsx(),
+    {
+      name: 'deep-index',
+      configureServer(server) {
+        server.middlewares.use((req, res, next) => {
+          if (req.url === '/') {
+            req.url = '/index.html'
+          }
+          next()
+        })
+      }
+    }
+  ],
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url))
     }
   },
+  root: './',
+  publicDir: 'src/public/',
   server: { open: true },
   build: {
     rollupOptions: {
       input: {
-        index: path.resolve(__dirname, 'index.html')
+        index: path.resolve(__dirname, 'src/public/index.html')
       }
     }
   }
