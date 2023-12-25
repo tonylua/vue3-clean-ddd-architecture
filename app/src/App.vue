@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { RouterLink, RouterView } from 'vue-router'
-import HelloWorld from './components/HelloWorld.vue'
+import HelloWorld from './dump-components/HelloWorld.vue'
 import { Color } from '@domains/Enum'
 </script>
 
