@@ -13,16 +13,23 @@ module.exports = {
     ecmaVersion: 'latest'
   },
   rules: {
+    // https://eslint.org/docs/latest/rules/no-restricted-imports
     'no-restricted-imports': [
       'error',
       {
-        paths: ['@infra/router']
+        patterns: [
+          {
+            group: ['@infra/*'],
+            message:
+              'DO NOT importing the dependency directly, use Dependency Injection methods such as `this.$foo` or `provide/inject` instead'
+          }
+        ]
       }
     ]
   },
   overrides: [
     {
-      files: ['app/src/main.ts'],
+      files: ['app/src/*.ts', 'app/src/common/**/*.ts'],
       rules: { 'no-restricted-imports': 'off' }
     }
   ]

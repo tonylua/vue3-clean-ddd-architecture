@@ -14,6 +14,7 @@ import { Color } from '@domains/Enum'
       <nav>
         <RouterLink to="/">Home</RouterLink>
         <RouterLink to="/about">About</RouterLink>
+        <RouterLink to="/bar/counter">Counter</RouterLink>
       </nav>
     </div>
   </header>

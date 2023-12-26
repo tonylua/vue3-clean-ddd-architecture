@@ -13,6 +13,11 @@ const router = createRouter({
       path: '/about',
       name: 'about',
       component: () => import('@/feature-foo/views/AboutView.vue')
+    },
+    {
+      path: '/bar/counter',
+      name: 'bar-counter',
+      component: () => import('@/feature-bar/views/CounterView.vue')
     }
   ]
 })
