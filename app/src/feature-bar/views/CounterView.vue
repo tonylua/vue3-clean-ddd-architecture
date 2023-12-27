@@ -7,9 +7,9 @@
 </template>
 
 <script setup lang="ts">
-import { injectCounterStore } from '@/common/utils/pinia'
+import { useCounterStore } from '@/common/store/counter'
 
-const useCounterStore = injectCounterStore()
+// const useCounterStore = injectCounterStore()
 
 const counterStore = useCounterStore?.()
 </script>

@@ -16,20 +16,12 @@ type MergeStateAndGetters<T> = {
   [P in keyof ComputeGetterValues<T>]: ComputeGetterValues<T>[P]
 }
 
-interface IPiniaStoreDefine {
-  State: Record<string, unknown>
-  Getters: Record<string, (state: IPiniaStoreDefine['State']) => unknown>
+type StoreRecord = Record<string | number | symbol, any>
+
+export interface IPiniaStoreDefine {
+  State: StoreRecord
+  Getters: Record<string, (state: StoreRecord) => any>
   Actions: Record<string, () => void>
 }
 
-type IPiniaStore<T extends IPiniaStoreDefine> = MergeStateAndGetters<T> & ExtractActions<T>
-
-/*********** business types ***********/
-
-export interface ICounterStoreDefine extends IPiniaStoreDefine {
-  State: { count: number }
-  Getters: { doubleCount: (state: ICounterStoreDefine['State']) => number }
-  Actions: { increment: () => void }
-}
-
-export type ICounterStore = IPiniaStore<ICounterStoreDefine>
+export type IPiniaStore<T extends IPiniaStoreDefine> = MergeStateAndGetters<T> & ExtractActions<T>
