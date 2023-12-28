@@ -1,6 +1,6 @@
 {
   "extends": "@vue/tsconfig/tsconfig.dom.json",
-  "include": ["env.d.ts", "app/**/*", "app/**/*.vue", "domains/**/*", "infra/**/*"],
+  "include": ["env.d.ts", "app/**/*", "app/**/*.vue", "domain/**/*", "infra/**/*"],
   "exclude": ["**/*.spec.(t|j)s"],
   "compilerOptions": {
     "moduleResolution": "node",
@@ -9,8 +9,9 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["./app/src/*"],
-      "@domains/*": ["./domains/*"],
-      "@infra/*": ["./infra/*"]
+      "@domain/*": ["./domain/*"],
+      "@infra/types/*": ["./infra/types/*"],
+      "@facade": ["./infra/facade.ts"]
     }
   }
 }

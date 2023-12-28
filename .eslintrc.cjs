@@ -19,9 +19,9 @@ module.exports = {
       {
         patterns: [
           {
-            group: ['@infra/*'],
+            group: ['@infra/modules/*'],
             message:
-              'DO NOT importing the dependency directly, use Dependency Injection methods such as `this.$foo` or `provide/inject` instead'
+              'DO NOT importing the dependency directly, use Dependency Injection methods such as `this.$foo` or `inject` or `@facade` instead'
           }
         ]
       }
@@ -29,7 +29,7 @@ module.exports = {
   },
   overrides: [
     {
-      files: ['app/src/*.ts', 'app/src/common/**/*.ts'],
+      files: ['@infra/facade.ts'],
       rules: { 'no-restricted-imports': 'off' }
     }
   ]

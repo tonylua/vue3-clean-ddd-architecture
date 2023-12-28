@@ -7,8 +7,7 @@
 </template>
 
 <script setup lang="ts">
-import { useCounterStore } from '@/common/store/counter'
-
+import useCounterStore from '@/common/hooks/useCounterStore'
 // const useCounterStore = injectCounterStore()
 
 const counterStore = useCounterStore?.()

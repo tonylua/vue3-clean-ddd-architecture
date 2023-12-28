@@ -1,7 +1,19 @@
 <script setup lang="ts">
+import { ref, onMounted, computed } from 'vue'
 import { RouterLink, RouterView } from 'vue-router'
 import HelloWorld from './common/components/HelloWorld.vue'
-import { Color } from '@domains/Enum'
+import { Colors } from '@domain/models/Color'
+import { useColors } from '@domain/usecases/useColor'
+
+const myColors = ref<string[]>(Object.values(Colors))
+const lastOneColor = computed(() => myColors.value[myColors.value.length - 1])
+
+const { fetchColors } = useColors()
+
+onMounted(async () => {
+  let newColors = await fetchColors()
+  myColors.value = newColors
+})
 </script>
 
 <template>
@@ -9,7 +21,7 @@ import { Color } from '@domains/Enum'
     <img alt="Vue logo" class="logo" src="@/common/assets/logo.svg" width="125" height="125" />
 
     <div class="wrapper">
-      <HelloWorld msg="You did it!" :color="Color.BLUE" />
+      <HelloWorld msg="You did it!" :color="lastOneColor" />
 
       <nav>
         <RouterLink to="/">Home</RouterLink>

@@ -9,7 +9,9 @@
   .about {
     min-height: 100vh;
     display: flex;
-    align-items: center;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
   }
 }
 </style>
